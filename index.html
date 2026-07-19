@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday Meershad ❤️</title>
 
 <style>
@@ -10,7 +11,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI', sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
@@ -23,18 +24,45 @@ body{
     color:white;
 }
 
-/* Card */
+
+/* Moon */
+.moon{
+    position:absolute;
+    top:40px;
+    right:50px;
+    width:100px;
+    height:100px;
+    background:#fff0b3;
+    border-radius:50%;
+    box-shadow:0 0 50px #fff0b3;
+}
+
+
+/* Stars */
+.star{
+    position:absolute;
+    color:white;
+    font-size:30px;
+    animation:shine 2s infinite alternate;
+}
+
+@keyframes shine{
+    from{opacity:.3}
+    to{opacity:1}
+}
+
+
+/* Main card */
 .card{
-    position:relative;
     width:90%;
     max-width:500px;
     padding:40px;
     text-align:center;
-    background:rgba(255,255,255,0.12);
+    background:rgba(255,255,255,.12);
     backdrop-filter:blur(12px);
     border-radius:25px;
-    box-shadow:0 0 40px rgba(255,0,80,0.5);
-    animation:appear 2s;
+    box-shadow:0 0 40px rgba(255,0,80,.5);
+    animation:appear 1.5s;
 }
 
 h1{
@@ -45,7 +73,6 @@ h1{
 
 h2{
     margin:15px;
-    color:white;
 }
 
 p{
@@ -57,6 +84,7 @@ p{
     font-size:60px;
     animation:beat 1s infinite;
 }
+
 
 button{
     margin-top:25px;
@@ -74,29 +102,59 @@ button:hover{
     transform:scale(1.1);
 }
 
-/* Moon */
-.moon{
-    position:absolute;
-    top:40px;
-    right:50px;
-    width:100px;
-    height:100px;
-    background:#fff0b3;
-    border-radius:50%;
-    box-shadow:0 0 50px #fff0b3;
+
+/* Popup */
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.75);
+    justify-content:center;
+    align-items:center;
+    z-index:10;
 }
 
-/* Stars */
-.star{
-    position:absolute;
+
+.popup-box{
+    width:90%;
+    max-width:450px;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 50px #ff4d6d;
+    animation:popupShow .5s;
+}
+
+
+.popup-box h2{
     color:white;
-    animation:shine 2s infinite alternate;
 }
 
-@keyframes shine{
-    from{opacity:.3}
-    to{opacity:1}
+
+.close{
+    position:absolute;
+    margin-left:180px;
+    margin-top:-25px;
+    font-size:35px;
+    cursor:pointer;
 }
+
+
+@keyframes popupShow{
+    from{
+        transform:scale(.5);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
 
 /* Floating hearts */
 .float-heart{
@@ -106,26 +164,33 @@ button:hover{
     animation:rise 8s linear infinite;
 }
 
+
 @keyframes rise{
     from{
         transform:translateY(0);
         opacity:1;
     }
+
     to{
         transform:translateY(-120vh);
         opacity:0;
     }
 }
 
+
 @keyframes beat{
-    50%{transform:scale(1.2);}
+    50%{
+        transform:scale(1.2);
+    }
 }
+
 
 @keyframes appear{
     from{
         opacity:0;
         transform:scale(.7);
     }
+
     to{
         opacity:1;
         transform:scale(1);
@@ -133,10 +198,12 @@ button:hover{
 }
 
 </style>
+
 </head>
 
 
 <body>
+
 
 <div class="moon"></div>
 
@@ -144,6 +211,7 @@ button:hover{
 <div class="star" style="top:30%;left:70%">⭐</div>
 <div class="star" style="top:70%;left:15%">✨</div>
 <div class="star" style="top:20%;left:50%">⭐</div>
+
 
 
 <div class="card">
@@ -154,6 +222,7 @@ button:hover{
 
 <h2>Meershad 🎂</h2>
 
+
 <p>
 Today is a special day because someone amazing
 was born.
@@ -161,22 +230,22 @@ was born.
 <br><br>
 
 I hope your life is always filled with happiness,
-success, endless smiles, and beautiful moments.
+success, and beautiful memories.
 
 <br><br>
 
-Even if I don't always say it,
-your happiness means a lot to me.
+Your smile is something truly special.
+Never stop smiling. ❤️
 
 </p>
 
-<button onclick="surprise()">
+
+<button onclick="openWish()">
 Open My Wish 💌
 </button>
 
-<p id="msg"></p>
 
-<br>
+<br><br>
 
 <p>
 With love ❤️<br>
@@ -186,34 +255,104 @@ With love ❤️<br>
 </div>
 
 
+
+
+<!-- Popup Letter -->
+
+<div class="popup" id="popup">
+
+<div class="popup-box">
+
+<span class="close" onclick="closeWish()">×</span>
+
+
+<div class="heart">💖</div>
+
+<h2>
+A Special Wish For You
+</h2>
+
+
+<p>
+
+Dear Meershad 🌹
+
+<br><br>
+
+On your birthday, I wish you endless happiness,
+success, and beautiful moments.
+
+<br><br>
+
+May every dream you have come true,
+and may your smile always stay bright.
+
+<br><br>
+
+Happy Birthday ❤️
+
+</p>
+
+
+<strong>
+— From Me 💕
+
+</strong>
+
+
+</div>
+
+</div>
+
+
+
 <script>
 
-function surprise(){
-document.getElementById("msg").innerHTML=
-"🌹 You deserve all the happiness in the world. Happy Birthday Meershad ❤️";
+
+function openWish(){
+
+document.getElementById("popup").style.display="flex";
+
 }
+
+
+function closeWish(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
 
 
 // floating hearts
 
 setInterval(()=>{
 
-let h=document.createElement("div");
-h.className="float-heart";
-h.innerHTML="❤️";
+let heart=document.createElement("div");
 
-h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=(5+Math.random()*5)+"s";
+heart.className="float-heart";
 
-document.body.appendChild(h);
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
 
 setTimeout(()=>{
-h.remove();
+
+heart.remove();
+
 },8000);
+
 
 },500);
 
+
 </script>
+
 
 </body>
 </html>
