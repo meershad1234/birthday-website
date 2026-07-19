@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meer>Happy Birthday!</meer>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 500px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin: 20px 0;
+      animation: bounce 2s infinite;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 24px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e63956;
+      transform: scale(1.05);
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-100vh) rotate(0deg);
+      }
+      to {
+        transform: translateY(100vh) rotate(720deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🎉 Happy Birthday! 🎂</h1>
+  <h2>Dear [Name],</h2>
+
+  <div class="emoji">🎈🎁🎊</div>
+
+  <p>
+    Wishing you a day filled with happiness, laughter, and unforgettable
+    memories. May this year bring you success, good health, and everything
+    you've been hoping for.
+  </p>
+
+  <button onclick="showMessage()">Click for a Surprise</button>
+</div>
+
+<script>
+  function showMessage() {
+    alert("🎉 Have an amazing birthday! May all your dreams come true! 🎂");
+  }
+
+  // Create confetti
+  const colors = ["#ff4d6d","#ffd166","#06d6a0","#118ab2","#8338ec"];
+
+  for (let i = 0; i < 80; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+    c.style.animationDuration = (3 + Math.random() * 5) + "s";
+    c.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(c);
+  }
+</script>
+
+</body>
+</html>
